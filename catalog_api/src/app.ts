@@ -21,7 +21,7 @@ app.get("/movie/:id", (req, res) => {
     const id: number = parseInt(req.params.id);
     const movie: Movie | undefined = movies.find(movie => movie.id == id);
     if (movie) res.status(200).json(movie);
-    else res.status(404);
+    else res.status(404).end();
 });
 app.put("/movie/:id", (req, res) => {
     const id: number = parseInt(req.params.id);
@@ -31,7 +31,7 @@ app.put("/movie/:id", (req, res) => {
         movies[movie_index] = { ...new_movie, id }
         const movie = movies[movie_index];
         res.status(200).json(movies[movie_index]);
-    } else res.status(404);
+    } else res.status(404).end();
 });
 
 export default app;
