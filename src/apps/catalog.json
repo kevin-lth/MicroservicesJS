@@ -1,2 +1,28 @@
+{
+	{
+		"id": 1,
+		"title": "Retour vers le passé",
+		"director": {
+						"id":1,
+						"name":"Monsieur le directeur",
+						"role":"director"
+				    }
+		cast: [{
+				"id":1,
+				"name":"James Bond",
+				"role":"actor"
+			   },{
+				"id":2,
+				"name":"Marie Curie",
+				"role":"actor"
+			   }],
+		"age-rating": 12,
+		"duration": 90, 
+		"popularity": 4,
+		"genres": [{
+					"id":1,
+					"description":"Mouvementé"
+					}]
+	}
 
-
+}
