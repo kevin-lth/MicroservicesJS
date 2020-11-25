@@ -34,5 +34,5 @@ export interface Genre {
 export interface People {
     id: number;
     name: String;
-    roles: 'actor' | 'director';
+    role: 'actor' | 'director';
 }
