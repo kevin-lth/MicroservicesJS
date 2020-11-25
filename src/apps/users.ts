@@ -44,4 +44,3 @@ app.put("/:id/suggestions", (req, res) => {
 });
 
 export default app ;
-
