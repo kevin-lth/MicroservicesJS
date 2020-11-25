@@ -1,45 +1,11 @@
 import express from 'express';
-import users from './users.json';
+import users_service from './apps/users';
+import catalog_service from './apps/catalog';
 
 const app = express();
-app.use(express.json());
 
-app.get("/users", (req, res) => {
-    res.status(200).json(users);
-});
-app.post("/users", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
-});
-
-app.get("/users/:id", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    res.status(200).json(user);
-});
-
-app.get("/users/:id/playlist", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    res.status(200).json(user.playlist);
-});
-app.put("/users/:id/playlist", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    user.playlist = req.body;
-    res.status(200).json(user);
-});
-
-app.get("/users/:id/suggestions", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    res.status(200).json(user.suggestions);});
-app.put("/users/:id/suggestions", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    user.suggestions = req.body;
-    res.status(200).json(user);
-});
+app.use("/users", users_service)
+app.use("/catalog", catalog_service)
 
 export { app };
 
