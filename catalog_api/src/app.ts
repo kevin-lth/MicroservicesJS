@@ -55,4 +55,53 @@ app.put("/movie/:id", (req, res) => {
     } else res.status(404).end();
 });
 
+
+app.get("/genres", (req, res) => {
+    res.status(200).json(genres);
+});
+app.post("/genres", (req, res) => {
+    genres.push(req.body);
+    res.status(200).json(genres);
+});
+app.get("/genre/:id", (req, res) => {
+    const id: number = parseInt(req.params.id);
+    const genre: Genre | undefined = genres.find(genre => genre.id == id);
+    if (genre) res.status(200).json(genre);
+    else res.status(404).end();
+});
+app.put("/genre/:id", (req, res) => {
+    const id: number = parseInt(req.params.id);
+    const genre: Genre | undefined = genres.find(genre => genre.id === id);
+    if (genre) {
+        genre.description = req.body;
+        res.status(200).json(genre);
+    } else res.status(404).end();
+});
+
+
+app.get("/peoples", (req, res) => {
+    res.status(200).json(peoples);
+});
+app.post("/peoples", (req, res) => {
+    peoples.push(req.body);
+    res.status(200).json(peoples);
+});
+app.get("/people/:id", (req, res) => {
+    const id: number = parseInt(req.params.id);
+    const people: People | undefined = peoples.find(people => people.id == id);
+    if (people) res.status(200).json(people);
+    else res.status(404).end();
+});
+app.put("/people/:id", (req, res) => {
+    const id: number = parseInt(req.params.id);
+    const new_people = req.body;
+    const people_index: number = peoples.findIndex(people => people.id == id);
+    if (0 <= people_index) {
+        peoples[people_index] = { ...new_people, id }
+        const people = peoples[people_index];
+        res.status(200).json(peoples[people_index]);
+    } else res.status(404).end();
+});
+
+
 export default app;
