@@ -26,7 +26,7 @@ app.get("/users/:id/playlist", (req, res) => {
 app.put("/users/:id/playlist", (req, res) => {
     const id = parseInt(req.params.id);
     const user = users.find(user => user.id === id);
-    user.playlist = req.body.playlist;
+    user.playlist = req.body;
     res.status(200).json(user);
 });
 
@@ -37,7 +37,7 @@ app.get("/users/:id/suggestions", (req, res) => {
 app.put("/users/:id/suggestions", (req, res) => {
     const id = parseInt(req.params.id);
     const user = users.find(user => user.id === id);
-    user.suggestions = req.body.suggestions;
+    user.suggestions = req.body;
     res.status(200).json(user);
 });
 
