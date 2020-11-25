@@ -1,4 +1,4 @@
-// Service /users
+/* Service /users */
 
 export interface User {
     id: number;
@@ -13,7 +13,7 @@ type Playlist = String[];
 
 type Suggestions = String[];
 
-// Service /catalog
+/* Service /catalog */
 
 export interface Movie {
     id: number;
@@ -23,12 +23,16 @@ export interface Movie {
     "age-rating": number;
     duration: number; // Nombre de minutes
     popularity: number;
+    genres: Genre[];
 }
 
 export interface Genre {
-
+    id: number;
+    description: String;
 }
 
 export interface People {
-
+    id: number;
+    name: String;
+    roles: 'actor' | 'director';
 }

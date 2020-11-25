@@ -1,4 +1,5 @@
 import express from 'express';
+import { Movie, Genre, People } from "../types";
 
 const app = express();
 app.use(express.json());
