@@ -1,5 +1,5 @@
 import express from 'express';
-import { Movie, Genre, People } from "../types";
+import { Movie, Genre, People } from "./types";
 
 import movies from "./catalog.json";
 
@@ -30,4 +30,4 @@ app.put("/movie/:id", (req, res) => {
     res.status(200).json(movies[movie_index]);
 });
 
-export default app ;
+export default app;
