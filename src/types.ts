@@ -1,8 +1,8 @@
 interface User {
-    id: Number;
+    id: number;
     name: String;
     email: String;
-    age: Number;
+    age: number;
     playlist: Playlist;
     suggestions: Suggestions;
 }

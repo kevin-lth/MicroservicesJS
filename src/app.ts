@@ -13,30 +13,30 @@ app.post("/users", (req, res) => {
 });
 
 app.get("/users/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-    const user = users.find(user => user.id === id);
+    const id: number = parseInt(req.params.id);
+    const user: User | undefined = users.find(user => user.id === id);
     res.status(200).json(user);
 });
 
 app.get("/users/:id/playlist", (req, res) => {
-    const id = parseInt(req.params.id);
-    const user = users.find(user => user.id === id);
+    const id: number = parseInt(req.params.id);
+    const user: User | undefined = users.find(user => user.id === id);
     res.status(200).json(user.playlist);
 });
 app.put("/users/:id/playlist", (req, res) => {
-    const id = parseInt(req.params.id);
-    const user = users.find(user => user.id === id);
+    const id: number = parseInt(req.params.id);
+    const user: User | undefined = users.find(user => user.id === id);
     user.playlist = req.body;
     res.status(200).json(user);
 });
 
 app.get("/users/:id/suggestions", (req, res) => {
-    const id = parseInt(req.params.id);
-    const user = users.find(user => user.id === id);
+    const id: number = parseInt(req.params.id);
+    const user: User | undefined = users.find(user => user.id === id);
     res.status(200).json(user.suggestions);});
 app.put("/users/:id/suggestions", (req, res) => {
-    const id = parseInt(req.params.id);
-    const user = users.find(user => user.id === id);
+    const id: number = parseInt(req.params.id);
+    const user: User | undefined = users.find(user => user.id === id);
     user.suggestions = req.body;
     res.status(200).json(user);
 });
