@@ -2,22 +2,22 @@
 
 export interface User {
     id: number;
-    name: String;
-    email: String;
+    name: string;
+    email: string;
     age: number;
     playlist: Playlist;
     suggestions: Suggestions;
 }
 
-type Playlist = String[];
+type Playlist = string[];
 
-type Suggestions = String[];
+type Suggestions = string[];
 
 /* Service /catalog */
 
 export interface Movie {
     id: number;
-    title: String;
+    title: string;
     director: People;
     cast: People[];
     "age-rating": number;
@@ -28,11 +28,11 @@ export interface Movie {
 
 export interface Genre {
     id: number;
-    description: String;
+    description: string;
 }
 
 export interface People {
     id: number;
-    name: String;
-    role: 'actor' | 'director';
+    name: string;
+    role: string;
 }
