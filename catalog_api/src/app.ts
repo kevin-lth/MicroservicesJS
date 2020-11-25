@@ -20,14 +20,18 @@ app.post("/movies", (req, res) => {
 app.get("/movie/:id", (req, res) => {
     const id: number = parseInt(req.params.id);
     const movie: Movie | undefined = movies.find(movie => movie.id == id);
-    res.status(200).json(movie);
+    if (movie) res.status(200).json(movie);
+    else res.status(404);
 });
 app.put("/movie/:id", (req, res) => {
     const id: number = parseInt(req.params.id);
     const new_movie = req.body;
     const movie_index: number = movies.findIndex(movie => movie.id == id);
-    movies[movie_index] = { ...new_movie, id }
-    res.status(200).json(movies[movie_index]);
+    if (0 <= movie_index) {
+        movies[movie_index] = { ...new_movie, id }
+        const movie = movies[movie_index];
+        res.status(200).json(movies[movie_index]);
+    } else res.status(404);
 });
 
 export default app;

@@ -17,30 +17,36 @@ app.post("/users/", (req, res) => {
 app.get("/users/:id", (req, res) => {
     const id: number = parseInt(req.params.id);
     const user: User | undefined = users.find(user => user.id === id);
-    res.status(200).json(user);
+    if (user) res.status(200).json(user);
+    else res.status(404);
 });
 
 app.get("/users/:id/playlist", (req, res) => {
     const id: number = parseInt(req.params.id);
     const user: User | undefined = users.find(user => user.id === id);
-    res.status(200).json(user.playlist);
+    if (user) res.status(200).json(user.playlist);
+    else res.status(404);
 });
 app.put("/users/:id/playlist", (req, res) => {
     const id: number = parseInt(req.params.id);
     const user: User | undefined = users.find(user => user.id === id);
-    user.playlist = req.body;
-    res.status(200).json(user);
+    if (user) {
+        user.playlist = req.body;
+        res.status(200).json(user);
+    } else res.status(404);
 });
 
 app.get("/users/:id/suggestions", (req, res) => {
     const id: number = parseInt(req.params.id);
     const user: User | undefined = users.find(user => user.id === id);
-    res.status(200).json(user.suggestions);});
+    if (user) res.status(200).json(user.suggestions);});
 app.put("/users/:id/suggestions", (req, res) => {
     const id: number = parseInt(req.params.id);
     const user: User | undefined = users.find(user => user.id === id);
-    user.suggestions = req.body;
-    res.status(200).json(user);
+    if (user) {
+        user.suggestions = req.body;
+        res.status(200).json(user);
+    } else res.status(404);
 });
 
 export default app;
