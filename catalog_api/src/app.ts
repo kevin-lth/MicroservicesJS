@@ -1,11 +1,32 @@
 import express from 'express';
 import { Movie, Genre, People } from "./types";
 
-import movies from "./catalog.json";
+import movies_json from "./catalog.json";
 
 // On crée artificiellement la liste des genres et des people - en pratique on utiliserait une BDD et ne rencontrerait donc pas ce problème
-const genres = []; // TODO
-const people = []; // TODO
+function convertValueToIndex<T>(reference_array: T[]) {
+    return (value: T) => {
+        const value_index: number = reference_array.findIndex((val: T) => val == value);
+        if (0 <= value_index) return reference_array[value_index];
+        else {
+            reference_array.push(value);
+            return reference_array[reference_array.length];
+        }
+    };
+}
+
+const genres: Genre[] = [];
+const people: People[] = [];
+const movies: Movie[] = movies_json.map(movie_json => {
+    // Genres
+    const movie_genres: Genre[] = movie_json.genres;
+    movie_genres.map(convertValueToIndex(genres));
+    // People
+    const movie_cast: People[] = movie_json.cast;
+    movie_cast.map(convertValueToIndex(people));
+    movie_json.director = convertValueToIndex(people)(movie_json.director);
+    return movie_json;
+});
 
 const app = express();
 app.use(express.json());
