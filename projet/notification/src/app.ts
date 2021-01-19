@@ -5,10 +5,10 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/notification/send", (req, res) => {
+app.get("/send", (req, res) => {
     // TODO
 });
-app.post("/notification/send", (req, res) => {
+app.post("/send", (req, res) => {
     // TODO
 });
 

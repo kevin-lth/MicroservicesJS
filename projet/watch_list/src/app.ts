@@ -5,25 +5,25 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/watch_list/add", (req, res) => {
+app.get("/add", (req, res) => {
     // TODO
 });
-app.post("/watch_list/add", (req, res) => {
-    // TODO
-});
-
-app.get("/watch_list/remove", (req, res) => {
-    // TODO
-});
-app.post("/watch_list/remove", (req, res) => {
+app.post("/add", (req, res) => {
     // TODO
 });
 
-app.get("/watch_list/get", (req, res) => {
+app.get("/remove", (req, res) => {
+    // TODO
+});
+app.post("/remove", (req, res) => {
     // TODO
 });
 
-app.get("/watch_list/get_all", (req, res) => {
+app.get("/get", (req, res) => {
+    // TODO
+});
+
+app.get("/get_all", (req, res) => {
     // TODO
 });
 

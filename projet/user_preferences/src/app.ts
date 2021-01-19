@@ -5,21 +5,21 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/user_preferences/get", (req, res) => {
+app.get("/get", (req, res) => {
     // TODO
 });
 
-app.get("/user_preferences/update", (req, res) => {
+app.get("/update", (req, res) => {
     // TODO
 });
-app.post("/user_preferences/update", (req, res) => {
+app.post("/update", (req, res) => {
     // TODO
 });
 
-app.get("/user_preferences/delete", (req, res) => {
+app.get("/delete", (req, res) => {
     // TODO
 });
-app.post("/user_preferences/delete", (req, res) => {
+app.post("/delete", (req, res) => {
     // TODO
 });
 
