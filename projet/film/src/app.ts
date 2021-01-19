@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     user: "nom_utilisateur",
     password: "mot_de_passe_utilisateur" });
 
-app.get("/film/get", (req, res) => {
+app.get("/get", (req, res) => {
     const id: number = parseInt(req.params.id);
     db.connect(function(err: any) {
         if (err) throw err;
@@ -23,31 +23,31 @@ app.get("/film/get", (req, res) => {
     });
 });
 
-app.get("/film/search", (req, res) => {
+app.get("/search", (req, res) => {
     // TODO
 });
-app.post("/film/search", (req, res) => {
-    // TODO
-});
-
-app.get("/film/add", (req, res) => {
-    // TODO
-});
-app.post("/film/add", (req, res) => {
+app.post("/search", (req, res) => {
     // TODO
 });
 
-app.get("/film/update", (req, res) => {
+app.get("/add", (req, res) => {
     // TODO
 });
-app.post("/film/update", (req, res) => {
+app.post("/add", (req, res) => {
     // TODO
 });
 
-app.get("/film/archive", (req, res) => {
+app.get("/update", (req, res) => {
     // TODO
 });
-app.post("/film/archive", (req, res) => {
+app.post("/update", (req, res) => {
+    // TODO
+});
+
+app.get("/archive", (req, res) => {
+    // TODO
+});
+app.post("/archive", (req, res) => {
     // TODO
 });
 

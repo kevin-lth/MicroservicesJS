@@ -5,41 +5,41 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.post("/authentification/login", (req, res) => {
+app.post("/login", (req, res) => {
     res.status(200).json({'token':'valeur'});
 });
 
-app.get("/authentification/add", (req, res) => {
+app.get("/add", (req, res) => {
     // TODO
 });
-app.post("/authentification/add", (req, res) => {
-    // TODO
-});
-
-app.get("/authentification/update", (req, res) => {
-    // TODO
-});
-app.post("/authentification/update", (req, res) => {
+app.post("/add", (req, res) => {
     // TODO
 });
 
-app.get("/authentification/delete", (req, res) => {
+app.get("/update", (req, res) => {
     // TODO
 });
-app.post("/authentification/delete", (req, res) => {
-    // TODO
-});
-
-app.get("/authentification/get_from_username", (req, res) => {
+app.post("/update", (req, res) => {
     // TODO
 });
 
-app.get("/authentification/get_from_token", (req, res) => {
+app.get("/delete", (req, res) => {
+    // TODO
+});
+app.post("/delete", (req, res) => {
+    // TODO
+});
+
+app.get("/get_from_username", (req, res) => {
+    // TODO
+});
+
+app.get("/get_from_token", (req, res) => {
     const token: string = req.params.token;
     res.status(200).json({'user':'name','role':'client'});
 });
 
-app.get("/authentification/get_all", (req, res) => {
+app.get("/get_all", (req, res) => {
     // TODO
 });
 

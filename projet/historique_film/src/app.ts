@@ -5,18 +5,18 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/historique_film/get", (req, res) => {
+app.get("/get", (req, res) => {
     // TODO
 });
 
-app.get("/historique_film/get_all", (req, res) => {
+app.get("/get_all", (req, res) => {
     // TODO
 });
 
-app.get("/historique_film/add", (req, res) => {
+app.get("/add", (req, res) => {
     // TODO
 });
-app.post("/historique_film/add", (req, res) => {
+app.post("/add", (req, res) => {
     // TODO
 });
 
