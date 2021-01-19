@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "Patate",
+        "email": "patator@hotmail.patate",
+        "age": 4,
+        "playlist": ["Pataflix", "Patatartiné"],
+        "suggestions": ["Comment sauver sa peau ?"]
+    },
+    {
+        "id": 2,
+        "name": "Coucou",
+        "email": "cou@cou.rgette",
+        "age": 48,
+        "playlist": ["Manger équilibré", "Matrix"],
+        "suggestions": ["Devenir un concombre"]
+    }
+]
