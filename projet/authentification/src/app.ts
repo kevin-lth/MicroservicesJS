@@ -57,7 +57,7 @@ app.post("/authentification/get_all", (req, res) => {
 });
 
 // ----------------------------------------------------------------
-
+/*
 app.get("/users/:id", (req, res) => {
     const id: number = parseInt(req.params.id);
     const user: User | undefined = users.find(user => user.id === id);
@@ -92,5 +92,5 @@ app.put("/users/:id/suggestions", (req, res) => {
         res.status(200).json(user);
     } else res.status(404).end();
 });
-
+*/
 export default app;
