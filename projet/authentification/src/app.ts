@@ -15,51 +15,45 @@ app.post("/authentification/login", (req, res) => {
 });
 
 app.get("/authentification/add", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/authentification/add", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 app.get("/authentification/update", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/authentification/update", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 app.get("/authentification/delete", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/authentification/delete", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 app.get("/authentification/get_from_username", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/authentification/get_from_username", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 app.get("/authentification/get_from_token", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/authentification/get_from_token", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 app.get("/authentification/get_all", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/authentification/get_all", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 // ----------------------------------------------------------------

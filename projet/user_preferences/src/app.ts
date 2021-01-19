@@ -7,27 +7,24 @@ const app = express();
 app.use(express.json());
 
 app.get("/user_preferences/get", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/user_preferences/get", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 app.get("/user_preferences/update", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/user_preferences/update", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 app.get("/user_preferences/delete", (req, res) => {
-    res.status(200).json(users);
+    // TODO
 });
 app.post("/user_preferences/delete", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    // TODO
 });
 
 export default app;
