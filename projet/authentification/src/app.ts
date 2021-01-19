@@ -1,5 +1,4 @@
 import express from 'express';
-import { User } from './types';
 
 import users from './users.json';
 
@@ -58,6 +57,7 @@ app.post("/authentification/get_all", (req, res) => {
 
 // ----------------------------------------------------------------
 /*
+import { User } from './types';
 app.get("/users/:id", (req, res) => {
     const id: number = parseInt(req.params.id);
     const user: User | undefined = users.find(user => user.id === id);
