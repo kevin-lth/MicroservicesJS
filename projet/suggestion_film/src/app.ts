@@ -5,14 +5,14 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/suggestion_film/get", (req, res) => {
+app.get("/get", (req, res) => {
     // TODO
 });
 
-app.get("/notification/update", (req, res) => {
+app.get("/update", (req, res) => {
     // TODO
 });
-app.post("/notification/update", (req, res) => {
+app.post("/update", (req, res) => {
     // TODO
 });
 
