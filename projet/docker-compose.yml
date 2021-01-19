@@ -1,0 +1,53 @@
+version: "3.7"
+services:
+    authentification:
+        build: authentification/.
+        ports:
+            - 8001:8080
+    film:
+        build: film/.
+        ports:
+            - 8002:8080
+        environment:
+            MYSQL_HOST: mysql
+            MYSQL_USER: root
+            MYSQL_PASSWORD: secret
+            MYSQL_DB: films
+    film_loue:
+        build: film_loue/.
+        ports:
+            - 8003:8080
+    historique_film:
+        build: historique_film/.
+        ports:
+            - 8004:8080
+    suggestion_film:
+        build: suggestion_film/.
+        ports:
+            - 8005:8080
+    watch_list:
+        build: watch_list/.
+        ports:
+            - 8006:8080
+    achat_film:
+        build: achat_film/.
+        ports:
+            - 8007:8080
+    user_preferences:
+        build: user_preferences/.
+        ports:
+            - 8008:8080
+    notification:
+        build: notification/.
+        ports:
+            - 8009:8080
+    mysql_film:
+        image: mysql:5.7
+        volumes:
+            - films-mysql-data:/var/lib/mysql
+        environment: 
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: films
+            
+volumes:
+  films-mysql-data:
