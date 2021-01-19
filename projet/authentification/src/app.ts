@@ -14,7 +14,6 @@ app.post("/authentification/login", (req, res) => {
     res.status(200).json(users);
 });
 
-
 app.get("/authentification/add", (req, res) => {
     res.status(200).json(users);
 });
@@ -39,10 +38,26 @@ app.post("/authentification/delete", (req, res) => {
     res.status(200).json(users);
 });
 
-app.get("/authentification/delete", (req, res) => {
+app.get("/authentification/get_from_username", (req, res) => {
     res.status(200).json(users);
 });
-app.post("/authentification/delete", (req, res) => {
+app.post("/authentification/get_from_username", (req, res) => {
+    users.push(req.body);
+    res.status(200).json(users);
+});
+
+app.get("/authentification/get_from_token", (req, res) => {
+    res.status(200).json(users);
+});
+app.post("/authentification/get_from_token", (req, res) => {
+    users.push(req.body);
+    res.status(200).json(users);
+});
+
+app.get("/authentification/get_all", (req, res) => {
+    res.status(200).json(users);
+});
+app.post("/authentification/get_all", (req, res) => {
     users.push(req.body);
     res.status(200).json(users);
 });
