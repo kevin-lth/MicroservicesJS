@@ -8,21 +8,12 @@ app.use(express.json());
 app.get("/film_loue/get_current", (req, res) => {
     // TODO
 });
-app.post("/film_loue/get_current", (req, res) => {
-    // TODO
-});
 
 app.get("/film_loue/get_from_period", (req, res) => {
     // TODO
 });
-app.post("/film_loue/get_from_period", (req, res) => {
-    // TODO
-});
 
 app.get("/film_loue/get_most_rented_from_period", (req, res) => {
-    // TODO
-});
-app.post("/film_loue/get_most_rented_from_period", (req, res) => {
     // TODO
 });
 

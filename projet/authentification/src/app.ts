@@ -5,12 +5,8 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/authentification/login", (req, res) => {
-    res.status(200).json(users);
-});
 app.post("/authentification/login", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    res.status(200).json({'token':'valeur'});
 });
 
 app.get("/authentification/add", (req, res) => {
@@ -37,21 +33,13 @@ app.post("/authentification/delete", (req, res) => {
 app.get("/authentification/get_from_username", (req, res) => {
     // TODO
 });
-app.post("/authentification/get_from_username", (req, res) => {
-    // TODO
-});
 
 app.get("/authentification/get_from_token", (req, res) => {
-    // TODO
-});
-app.post("/authentification/get_from_token", (req, res) => {
-    // TODO
+    const token: string = req.params.token;
+    res.status(200).json({'user':'name','role':'client'});
 });
 
 app.get("/authentification/get_all", (req, res) => {
-    // TODO
-});
-app.post("/authentification/get_all", (req, res) => {
     // TODO
 });
 

@@ -8,9 +8,6 @@ app.use(express.json());
 app.get("/user_preferences/get", (req, res) => {
     // TODO
 });
-app.post("/user_preferences/get", (req, res) => {
-    // TODO
-});
 
 app.get("/user_preferences/update", (req, res) => {
     // TODO

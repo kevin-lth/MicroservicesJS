@@ -8,14 +8,8 @@ app.use(express.json());
 app.get("/historique_film/get", (req, res) => {
     // TODO
 });
-app.post("/historique_film/get", (req, res) => {
-    // TODO
-});
 
 app.get("/historique_film/get_all", (req, res) => {
-    // TODO
-});
-app.post("/historique_film/get_all", (req, res) => {
     // TODO
 });
 

@@ -1,15 +1,26 @@
 import express from 'express';
+const mysql = require('mysql');
 
-import users from './users.json';
 
 const app = express();
 app.use(express.json());
 
+const db = mysql.createConnection({
+    host: "localhost", 
+    user: "nom_utilisateur",
+    password: "mot_de_passe_utilisateur" });
+
 app.get("/film/get", (req, res) => {
-    // TODO
-});
-app.post("/film/get", (req, res) => {
-    // TODO
+    const id: number = parseInt(req.params.id);
+    db.connect(function(err: any) {
+        if (err) throw err;
+        console.log("Connecté à la base de données MySQL!");
+        var sql = "SELECT * FROM film WHERE id = ?";
+        db.query(sql, id, function(err: any, result: any) {
+            if (err) throw err;
+            res.status(200).json(result);
+        });
+    });
 });
 
 app.get("/film/search", (req, res) => {
