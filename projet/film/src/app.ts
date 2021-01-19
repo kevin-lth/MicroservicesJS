@@ -1,5 +1,4 @@
 import express from 'express';
-import { User } from './types';
 
 import users from './users.json';
 
@@ -7,7 +6,8 @@ const app = express();
 app.use(express.json());
 
 app.get("/film/get", (req, res) => {
-    // TODO
+    const id: number = parseInt(req.params.id);
+    //TODO
 });
 app.post("/film/get", (req, res) => {
     // TODO

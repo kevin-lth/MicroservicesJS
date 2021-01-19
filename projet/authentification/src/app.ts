@@ -33,21 +33,13 @@ app.post("/authentification/delete", (req, res) => {
 app.get("/authentification/get_from_username", (req, res) => {
     // TODO
 });
-app.post("/authentification/get_from_username", (req, res) => {
-    // TODO
-});
 
 app.get("/authentification/get_from_token", (req, res) => {
-    // TODO
-});
-app.post("/authentification/get_from_token", (req, res) => {
-    // TODO
+    const token: string = parseInt(req.params.token);
+    res.status(200).json({'user':'name','token':'valeur'});
 });
 
 app.get("/authentification/get_all", (req, res) => {
-    // TODO
-});
-app.post("/authentification/get_all", (req, res) => {
     // TODO
 });
 
