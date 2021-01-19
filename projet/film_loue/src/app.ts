@@ -6,47 +6,53 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/users", (req, res) => {
-    res.status(200).json(users);
+app.get("/film_loue/get_current", (req, res) => {
+    // TODO
 });
-app.post("/users/", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
-});
-
-app.get("/users/:id", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    if (user) res.status(200).json(user);
-    else res.status(404).end();
+app.post("/film_loue/get_current", (req, res) => {
+    // TODO
 });
 
-app.get("/users/:id/playlist", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    if (user) res.status(200).json(user.playlist);
-    else res.status(404).end();
+app.get("/film_loue/get_from_period", (req, res) => {
+    // TODO
 });
-app.put("/users/:id/playlist", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    if (user) {
-        user.playlist = req.body;
-        res.status(200).json(user);
-    } else res.status(404).end();
+app.post("/film_loue/get_from_period", (req, res) => {
+    // TODO
 });
 
-app.get("/users/:id/suggestions", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    if (user) res.status(200).json(user.suggestions);});
-app.put("/users/:id/suggestions", (req, res) => {
-    const id: number = parseInt(req.params.id);
-    const user: User | undefined = users.find(user => user.id === id);
-    if (user) {
-        user.suggestions = req.body;
-        res.status(200).json(user);
-    } else res.status(404).end();
+app.get("/film_loue/get_most_rented_from_period", (req, res) => {
+    // TODO
+});
+app.post("/film_loue/get_most_rented_from_period", (req, res) => {
+    // TODO
+});
+
+app.get("/film_loue/watch", (req, res) => {
+    // TODO
+});
+app.post("/film_loue/watch", (req, res) => {
+    // TODO
+});
+
+app.get("/film_loue/report_movies", (req, res) => {
+    // TODO
+});
+app.post("/film_loue/report_movies", (req, res) => {
+    // TODO
+});
+
+app.get("/film_loue/report_users", (req, res) => {
+    // TODO
+});
+app.post("/film_loue/report_users", (req, res) => {
+    // TODO
+});
+
+app.get("/film_loue/add", (req, res) => {
+    // TODO
+});
+app.post("/film_loue/add", (req, res) => {
+    // TODO
 });
 
 export default app;
