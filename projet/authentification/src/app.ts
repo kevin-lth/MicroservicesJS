@@ -5,9 +5,6 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/authentification/login", (req, res) => {
-    res.status(200).json();
-});
 app.post("/authentification/login", (req, res) => {
     res.status(200).json({'token':'valeur'});
 });
