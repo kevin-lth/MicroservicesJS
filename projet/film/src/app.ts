@@ -9,9 +9,6 @@ app.get("/film/get", (req, res) => {
     const id: number = parseInt(req.params.id);
     //TODO
 });
-app.post("/film/get", (req, res) => {
-    // TODO
-});
 
 app.get("/film/search", (req, res) => {
     // TODO

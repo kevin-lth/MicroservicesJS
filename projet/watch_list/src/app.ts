@@ -22,14 +22,8 @@ app.post("/watch_list/remove", (req, res) => {
 app.get("/watch_list/get", (req, res) => {
     // TODO
 });
-app.post("/watch_list/get", (req, res) => {
-    // TODO
-});
 
 app.get("/watch_list/get_all", (req, res) => {
-    // TODO
-});
-app.post("/watch_list/get_all", (req, res) => {
     // TODO
 });
 

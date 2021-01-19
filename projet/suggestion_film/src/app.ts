@@ -8,9 +8,6 @@ app.use(express.json());
 app.get("/suggestion_film/get", (req, res) => {
     // TODO
 });
-app.post("/suggestion_film/get", (req, res) => {
-    // TODO
-});
 
 app.get("/notification/update", (req, res) => {
     // TODO
