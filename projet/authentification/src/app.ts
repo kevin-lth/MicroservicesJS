@@ -6,11 +6,10 @@ const app = express();
 app.use(express.json());
 
 app.get("/authentification/login", (req, res) => {
-    res.status(200).json(users);
+    res.status(200).json();
 });
 app.post("/authentification/login", (req, res) => {
-    users.push(req.body);
-    res.status(200).json(users);
+    res.status(200).json();
 });
 
 app.get("/authentification/add", (req, res) => {
