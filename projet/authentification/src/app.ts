@@ -6,13 +6,48 @@ import users from './users.json';
 const app = express();
 app.use(express.json());
 
-app.get("/users", (req, res) => {
+app.get("/authentification/login", (req, res) => {
     res.status(200).json(users);
 });
-app.post("/users/", (req, res) => {
+app.post("/authentification/login", (req, res) => {
     users.push(req.body);
     res.status(200).json(users);
 });
+
+
+app.get("/authentification/add", (req, res) => {
+    res.status(200).json(users);
+});
+app.post("/authentification/add", (req, res) => {
+    users.push(req.body);
+    res.status(200).json(users);
+});
+
+app.get("/authentification/update", (req, res) => {
+    res.status(200).json(users);
+});
+app.post("/authentification/update", (req, res) => {
+    users.push(req.body);
+    res.status(200).json(users);
+});
+
+app.get("/authentification/delete", (req, res) => {
+    res.status(200).json(users);
+});
+app.post("/authentification/delete", (req, res) => {
+    users.push(req.body);
+    res.status(200).json(users);
+});
+
+app.get("/authentification/delete", (req, res) => {
+    res.status(200).json(users);
+});
+app.post("/authentification/delete", (req, res) => {
+    users.push(req.body);
+    res.status(200).json(users);
+});
+
+// ----------------------------------------------------------------
 
 app.get("/users/:id", (req, res) => {
     const id: number = parseInt(req.params.id);
