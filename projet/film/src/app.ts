@@ -18,7 +18,7 @@ app.get("/film/get", (req, res) => {
         var sql = "SELECT * FROM film WHERE id = ?";
         db.query(sql, id, function(err: any, result: any) {
             if (err) throw err;
-            console.log(result)
+            res.status(200).json(result);
         });
     });
 });
