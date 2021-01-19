@@ -9,7 +9,7 @@ app.get("/authentification/login", (req, res) => {
     res.status(200).json();
 });
 app.post("/authentification/login", (req, res) => {
-    res.status(200).json();
+    res.status(200).json({'token':'valeur'});
 });
 
 app.get("/authentification/add", (req, res) => {
