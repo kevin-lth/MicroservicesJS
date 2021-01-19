@@ -36,7 +36,7 @@ app.get("/authentification/get_from_username", (req, res) => {
 
 app.get("/authentification/get_from_token", (req, res) => {
     const token: string = req.params.token;
-    res.status(200).json({'user':'name','token':'valeur'});
+    res.status(200).json({'user':'name','role':'client'});
 });
 
 app.get("/authentification/get_all", (req, res) => {
