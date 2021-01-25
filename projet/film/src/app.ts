@@ -68,16 +68,16 @@ app.post("/search", (req, res) => {
     if (title) {
         filters.push( "title LIKE '" + title + "'");
     }
-    if (title) {
+    if (genre) {
         filters.push( "genre LIKE '" + genre + "'");
     }
-    if (title) {
+    if (directory) {
         filters.push( "directory LIKE '" + directory + "'");
     }
-    if (title) {
+    if (country) {
         filters.push( "country LIKE '" + country + "'");
     }
-    if (title) {
+    if (date) {
         filters.push( "date = " + date);
     }
     if (filters.length != 0){
@@ -89,13 +89,91 @@ app.post("/search", (req, res) => {
     });
 });
 
+
 app.post("/add", (req, res) => {
-    // TODO parametre data
+    const title: string = <string> req.body.title;
+    const description: string = <string> req.body.description;
+    const genre: string = <string> req.body.genre;
+    const directory: string = <string> req.body.directory;
+    const country: string = <string> req.body.country;
+    const date: string = <string> req.body.date;
+    let sql = "INSERT INTO film VALUES"
+    var data = []    
+    if (title) {
+        data.push( "'" + title + "'");
+    } else {
+        data.push( "''");
+    }
+    if (description) {
+        data.push( "'" + description + "'");
+    } else {
+        data.push( "''");
+    }
+    if (genre) {
+        data.push( "'" + genre + "'");
+    } else {
+        data.push( "''");
+    }
+    if (directory) {
+        data.push( "'" + directory + "'");
+    
+    } else {
+        data.push( "''");
+    }
+    if (country) {
+        data.push( "'" + country + "'");
+    } else {
+        data.push( "''");
+    }
+    if (date) {
+        data.push(date);
+    } else {
+        data.push( "''");
+    }
+    sql += ' (' + data.join(", ") + ")"
+    db.query(sql, (err: any, result: any) => {
+        if (err) throw err;
+        res.status(200).json(result);
+    });
 });
 
 app.put("/update", (req, res) => {
     const id: number = parseInt(<string> req.query.id);
-    // TODO + data
+    if (id) {
+        let sql = "UPDATE film SET ";
+        const title: string = <string> req.body.title;
+        const description: string = <string> req.body.description;
+        const genre: string = <string> req.body.genre;
+        const directory: string = <string> req.body.directory;
+        const country: string = <string> req.body.country;
+        const date: string = <string> req.body.date;
+        var data = []    
+        if (title) {
+            data.push( "title = '" + title + "'");
+        }
+        if (description) {
+            data.push( "description = '" + description + "'");
+        }
+        if (genre) {
+            data.push( "genre = '" + genre + "'");
+        }
+        if (directory) {
+            data.push( "directory = '" + directory + "'");
+        }
+        if (country) {
+            data.push( "country = '" + country + "'");
+        }
+        if (date) {
+            data.push( "date = " + date );
+        }
+        if (data.length != 0){
+            sql += + data.join(", ") + " WHERE id = ?"
+        } else res.status(404).end();
+        db.query(sql, id, (err: any, result: any) => {
+            if (err) throw err;
+            res.status(200).json(result);
+        });
+    } else res.status(404).end();
 });
 
 app.put("/archive", (req, res) => {
