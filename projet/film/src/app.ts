@@ -16,6 +16,7 @@ function initConnection() {
         user: user_db,
         password: password_db
     });
+    // On initialise la base de données puis la table. Pour initialiser la base de données, on utilise une connexion unique; pour la suite, on utilise un pool de connexions.
     const create_db_sql = "CREATE DATABASE IF NOT EXISTS " + films_db;
     db_temp.query(create_db_sql, (err: any, result: any) => {
         if (err) throw err;
