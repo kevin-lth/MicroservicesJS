@@ -30,6 +30,12 @@ function initConnection() {
                 country VARCHAR(50),
                 date DATE
             )`;
+        const create_film_loues_sql = `
+            CREATE TABLE IF NOT EXISTS film_loues(
+                id INT NOT NULL,
+                username VARCHAR(20) NOT NULL,
+                PRIMARY KEY (id, username)
+            )`;
         db = mysql.createPool({
             connectionLimit : 10,
             host: host_db, 
@@ -39,7 +45,11 @@ function initConnection() {
         });
         db.query(create_film_sql, (err: any, result: any) => {
             if (err) throw err;
-            console.log("films is ready !");
+            console.log("film is ready !");
+        });
+        db.query(create_film_loues_sql, (err: any, result: any) => {
+            if (err) throw err;
+            console.log("film_loues is ready !");
         });
     });
 }
@@ -63,25 +73,15 @@ app.post("/search", (req, res) => {
     const directory: string = <string> req.body.directory;
     const country: string = <string> req.body.country;
     const date: string = <string> req.body.date;
-    let sql = "SELECT * FROM film "
-    var filters = []    
-    if (title) {
-        filters.push( "title LIKE '" + title + "'");
-    }
-    if (genre) {
-        filters.push( "genre LIKE '" + genre + "'");
-    }
-    if (directory) {
-        filters.push( "directory LIKE '" + directory + "'");
-    }
-    if (country) {
-        filters.push( "country LIKE '" + country + "'");
-    }
-    if (date) {
-        filters.push( "date = " + date);
-    }
+    let filters = [];    
+    if (title) filters.push(`title LIKE ${mysql.escape(title)} `);
+    if (genre) filters.push(`genre LIKE ${mysql.escape(genre)} `);
+    if (directory) filters.push(`directory LIKE ${mysql.escape(directory)}`);
+    if (country) filters.push(`country LIKE ${mysql.escape(country)}`);
+    if (date) filters.push(`date = ${mysql.escape(date)}`);
+    const sql = "SELECT * FROM film"
     if (filters.length != 0){
-        sql += ' WHERE ' + filters.join(" AND ")
+        sql += ' WHERE ' + filters.join(" AND ");
     }
     db.query(sql, (err: any, result: any) => {
         if (err) throw err;
@@ -97,41 +97,8 @@ app.post("/add", (req, res) => {
     const directory: string = <string> req.body.directory;
     const country: string = <string> req.body.country;
     const date: string = <string> req.body.date;
-    let sql = "INSERT INTO film VALUES"
-    var data = []    
-    if (title) {
-        data.push( "'" + title + "'");
-    } else {
-        data.push( "''");
-    }
-    if (description) {
-        data.push( "'" + description + "'");
-    } else {
-        data.push( "''");
-    }
-    if (genre) {
-        data.push( "'" + genre + "'");
-    } else {
-        data.push( "''");
-    }
-    if (directory) {
-        data.push( "'" + directory + "'");
-    
-    } else {
-        data.push( "''");
-    }
-    if (country) {
-        data.push( "'" + country + "'");
-    } else {
-        data.push( "''");
-    }
-    if (date) {
-        data.push(date);
-    } else {
-        data.push( "''");
-    }
-    sql += ' (' + data.join(", ") + ")"
-    db.query(sql, (err: any, result: any) => {
+    let sql = "INSERT INTO film VALUES(?, ?, ?, ?, ?, ?)"
+    db.query(sql, [title, description, genre, directory, country, date], (err: any, result: any) => {
         if (err) throw err;
         res.status(200).json(result);
     });
@@ -140,35 +107,22 @@ app.post("/add", (req, res) => {
 app.put("/update", (req, res) => {
     const id: number = parseInt(<string> req.query.id);
     if (id) {
-        let sql = "UPDATE film SET ";
         const title: string = <string> req.body.title;
         const description: string = <string> req.body.description;
         const genre: string = <string> req.body.genre;
         const directory: string = <string> req.body.directory;
         const country: string = <string> req.body.country;
         const date: string = <string> req.body.date;
-        var data = []    
-        if (title) {
-            data.push( "title = '" + title + "'");
-        }
-        if (description) {
-            data.push( "description = '" + description + "'");
-        }
-        if (genre) {
-            data.push( "genre = '" + genre + "'");
-        }
-        if (directory) {
-            data.push( "directory = '" + directory + "'");
-        }
-        if (country) {
-            data.push( "country = '" + country + "'");
-        }
-        if (date) {
-            data.push( "date = " + date );
-        }
-        if (data.length != 0){
-            sql += + data.join(", ") + " WHERE id = ?"
-        } else res.status(404).end();
+        let data = []    
+        if (title) data.push(`title = ${mysql.escape(title)}`);
+        if (description)data.push(`description = ${mysql.escape(description)}`);
+        if (genre) data.push(`genre = ${mysql.escape(genre)}`);
+        if (directory) data.push(`directory = ${mysql.escape(directory)}`);
+        if (country) data.push(`country = ${mysql.escape(country)}`);
+        if (date) data.push(`date = ${mysql.escape(date)}`);
+        const sql = "UPDATE film SET ";
+        if (data.length != 0) sql += + data.join(", ") + " WHERE id = ?";
+        else { res.status(404).end(); return; }
         db.query(sql, id, (err: any, result: any) => {
             if (err) throw err;
             res.status(200).json(result);
@@ -177,7 +131,7 @@ app.put("/update", (req, res) => {
 });
 
 app.put("/archive", (req, res) => {
-    // TODO
+    // TODO : Not MVP
 });
 
 

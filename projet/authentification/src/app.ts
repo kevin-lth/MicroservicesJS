@@ -27,7 +27,7 @@ app.get("/get_from_username", (req, res) => {
 });
 
 app.get("/get_from_token", (req, res) => {
-    const token: string = req.params.token;
+    const token: string = <string> req.query.token;
     res.status(200).json({'user':'username','role':'client'});
 });
 
