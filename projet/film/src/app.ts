@@ -1,6 +1,6 @@
 import express from 'express';
 const mysql = require('mysql');
-const http = require("http")
+const http = require("http");
 
 const app = express();
 app.use(express.json());
@@ -29,7 +29,7 @@ function initConnection() {
                 title VARCHAR(100),
                 description TEXT,
                 genre VARCHAR(20),
-                directory VARCHAR(50),
+                director VARCHAR(50),
                 country VARCHAR(50),
                 date DATE
             )`;
@@ -80,13 +80,13 @@ app.post("/search", (req, res) => {
     checkAuthThen(req, res, (req, res) => {
         const title: string = <string> req.body.title;
         const genre: string = <string> req.body.genre;
-        const directory: string = <string> req.body.directory;
+        const director: string = <string> req.body.director;
         const country: string = <string> req.body.country;
         const date: string = <string> req.body.date;
         let filters = [];    
         if (title) filters.push(`title LIKE ${mysql.escape(title)} `);
         if (genre) filters.push(`genre LIKE ${mysql.escape(genre)} `);
-        if (directory) filters.push(`directory LIKE ${mysql.escape(directory)}`);
+        if (director) filters.push(`director LIKE ${mysql.escape(director)}`);
         if (country) filters.push(`country LIKE ${mysql.escape(country)}`);
         if (date) filters.push(`date = ${mysql.escape(date)}`);
         let sql = "SELECT * FROM film"
@@ -106,11 +106,11 @@ app.post("/add", (req, res) => {
         const title: string = <string> req.body.title;
         const description: string = <string> req.body.description;
         const genre: string = <string> req.body.genre;
-        const directory: string = <string> req.body.directory;
+        const director: string = <string> req.body.director;
         const country: string = <string> req.body.country;
         const date: string = <string> req.body.date;
-        let sql = "INSERT INTO film(title, description, genre, directory, country, date) VALUES(?, ?, ?, ?, ?, ?)"
-        db.query(sql, [title, description, genre, directory, country, date], (err: any, result: any) => {
+        let sql = "INSERT INTO film(title, description, genre, director, country, date) VALUES(?, ?, ?, ?, ?, ?)"
+        db.query(sql, [title, description, genre, director, country, date], (err: any, result: any) => {
             if (err) throw err;
             res.status(200).json(result);
         });
@@ -124,18 +124,18 @@ app.put("/update", (req, res) => {
             const title: string = <string> req.body.title;
             const description: string = <string> req.body.description;
             const genre: string = <string> req.body.genre;
-            const directory: string = <string> req.body.directory;
+            const director: string = <string> req.body.director;
             const country: string = <string> req.body.country;
             const date: string = <string> req.body.date;
-            let data = []    
+            let data = [];
             if (title) data.push(`title = ${mysql.escape(title)}`);
             if (description)data.push(`description = ${mysql.escape(description)}`);
             if (genre) data.push(`genre = ${mysql.escape(genre)}`);
-            if (directory) data.push(`directory = ${mysql.escape(directory)}`);
+            if (director) data.push(`director = ${mysql.escape(director)}`);
             if (country) data.push(`country = ${mysql.escape(country)}`);
             if (date) data.push(`date = ${mysql.escape(date)}`);
             let sql = "UPDATE film SET ";
-            if (data.length != 0) sql += + data.join(", ") + " WHERE id = ?";
+            if (data.length != 0) sql += data.join(", ") + " WHERE id = ?";
             else { res.status(404).end(); return; }
             db.query(sql, id, (err: any, result: any) => {
                 if (err) throw err;

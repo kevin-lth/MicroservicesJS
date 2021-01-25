@@ -27,10 +27,8 @@ function initConnection() {
             CREATE TABLE IF NOT EXISTS film_loues(
                 id INT NOT NULL,
                 username VARCHAR(20) NOT NULL,
-                PRIMARY KEY (id, username),
-                FOREIGN KEY (id)
-                    REFERENCES film(id)
-                    ON DELETE CASCADE
+                FOREIGN KEY (id) REFERENCES film(id),
+                PRIMARY KEY (id, username)
             )`;
         db = mysql.createPool({
             connectionLimit : 10,
@@ -87,7 +85,7 @@ app.get("/watch", (req, res) => {
             const sql = "SELECT * FROM film_loues WHERE id = ?";
             db.query(sql, id, (err: any, result: any) => {
                 if (err) throw err;
-                res.status(200).json(result);
+                res.status(200).json(result); // TODO : Not MVP
             });
         } else res.status(404).end();
      });

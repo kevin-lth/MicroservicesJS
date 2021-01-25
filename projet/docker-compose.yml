@@ -27,11 +27,9 @@ services:
             - mysql_film
         links:
             - authentification
-            - achat_film
             - mysql_film
         environment:
             AUTH_HOST: authentification
-            ACHAT_HOST: achat_film
             MYSQL_HOST: mysql_film
             MYSQL_USER: root
             MYSQL_PASSWORD: secret
@@ -54,9 +52,10 @@ services:
             - 8007:8080
         links:
             - authentification
+            - film_loue
         environment:
             AUTH_HOST: authentification
-            LOUE_HOST: film_loue
+            LOCATION_HOST: film_loue
     user_preferences:
         build: user_preferences/.
         ports:
