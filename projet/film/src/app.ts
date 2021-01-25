@@ -57,31 +57,48 @@ app.get("/get", (req, res) => {
     } else res.status(404).end();
 });
 
-app.get("/search", (req, res) => {
-    // TODO
-});
 app.post("/search", (req, res) => {
-    // TODO
+    const title: string = <string> req.body.title;
+    const genre: string = <string> req.body.genre;
+    const directory: string = <string> req.body.directory;
+    const country: string = <string> req.body.country;
+    const date: string = <string> req.body.date;
+    let sql = "SELECT * FROM film "
+    var filters = []    
+    if (title) {
+        filters.push( "title LIKE '" + title + "'");
+    }
+    if (title) {
+        filters.push( "genre LIKE '" + genre + "'");
+    }
+    if (title) {
+        filters.push( "directory LIKE '" + directory + "'");
+    }
+    if (title) {
+        filters.push( "country LIKE '" + country + "'");
+    }
+    if (title) {
+        filters.push( "date = " + date);
+    }
+    if (filters.length != 0){
+        sql += ' WHERE ' + filters.join(" AND ")
+    }
+    db.query(sql, (err: any, result: any) => {
+        if (err) throw err;
+        res.status(200).json(result);
+    });
 });
 
-app.get("/add", (req, res) => {
-    // TODO
-});
 app.post("/add", (req, res) => {
-    // TODO
+    // TODO parametre data
 });
 
-app.get("/update", (req, res) => {
-    // TODO
-});
-app.post("/update", (req, res) => {
-    // TODO
+app.put("/update", (req, res) => {
+    const id: number = parseInt(<string> req.query.id);
+    // TODO + data
 });
 
-app.get("/archive", (req, res) => {
-    // TODO
-});
-app.post("/archive", (req, res) => {
+app.put("/archive", (req, res) => {
     // TODO
 });
 
