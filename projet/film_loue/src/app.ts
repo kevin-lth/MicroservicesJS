@@ -27,7 +27,10 @@ function initConnection() {
             CREATE TABLE IF NOT EXISTS film_loues(
                 id INT NOT NULL,
                 username VARCHAR(20) NOT NULL,
-                PRIMARY KEY (id, username)
+                PRIMARY KEY (id, username),
+                FOREIGN KEY (id)
+                    REFERENCES film(id)
+                    ON DELETE CASCADE
             )`;
         db = mysql.createPool({
             connectionLimit : 10,
@@ -99,7 +102,16 @@ app.get("/report_users", (req, res) => {
 });
 
 app.post("/add", (req, res) => {
-    // TODO : Not MVP
+    checkAuthThen(req, res, (req, res) => {
+        const id: number = parseInt(<string> req.query.id);
+        if (id) {
+            const sql = "INSERT INTO film_loues(id, username) VALUES(?, ?)";
+            db.query(sql, [id, "username"], (err: any, result: any) => {
+                if (err) throw err;
+                res.status(200).json(result);
+            });
+        } else res.status(404).end();
+     });
 });
 
 export default app;

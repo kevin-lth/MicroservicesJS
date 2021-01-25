@@ -109,7 +109,7 @@ app.post("/add", (req, res) => {
         const directory: string = <string> req.body.directory;
         const country: string = <string> req.body.country;
         const date: string = <string> req.body.date;
-        let sql = "INSERT INTO film VALUES(?, ?, ?, ?, ?, ?)"
+        let sql = "INSERT INTO film(title, description, genre, directory, country, date) VALUES(?, ?, ?, ?, ?, ?)"
         db.query(sql, [title, description, genre, directory, country, date], (err: any, result: any) => {
             if (err) throw err;
             res.status(200).json(result);
