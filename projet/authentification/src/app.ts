@@ -27,6 +27,7 @@ app.get("/get_from_username", (req, res) => {
 });
 
 app.get("/get_from_token", (req, res) => {
+    console.log("auth/get_from_token was called !"); 
     const token: string = <string> req.query.token;
     res.status(200).json({'user':'username','role':'client'});
 });

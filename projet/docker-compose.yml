@@ -11,8 +11,10 @@ services:
         depends_on:
             - mysql_film
         links:
+            - authentification
             - mysql_film
         environment:
+            AUTH_HOST: authentification
             MYSQL_HOST: mysql_film
             MYSQL_USER: root
             MYSQL_PASSWORD: secret
@@ -21,6 +23,17 @@ services:
         build: film_loue/.
         ports:
             - 8003:8080
+        depends_on:
+            - mysql_film
+        links:
+            - authentification
+            - mysql_film
+        environment:
+            AUTH_HOST: authentification
+            MYSQL_HOST: mysql_film
+            MYSQL_USER: root
+            MYSQL_PASSWORD: secret
+            MYSQL_DB: films
     historique_film:
         build: historique_film/.
         ports:
