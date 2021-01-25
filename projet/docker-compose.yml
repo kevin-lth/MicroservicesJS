@@ -8,8 +8,12 @@ services:
         build: film/.
         ports:
             - 8002:8080
+        depends_on:
+            - mysql_film
+        links:
+            - mysql_film
         environment:
-            MYSQL_HOST: mysql
+            MYSQL_HOST: mysql_film
             MYSQL_USER: root
             MYSQL_PASSWORD: secret
             MYSQL_DB: films
