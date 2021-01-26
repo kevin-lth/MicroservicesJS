@@ -1,10 +1,12 @@
 
 # Rent & Stream Service
 
+*Agathe Hainaut & Kévin Lethuillier*
+
 ## What has been done ?
 
-``authentifiaction/login``
-An authenfication is simulated and will always connect you as a client.
+``authentification/login``
+An authentification is simulated and will always connect you as a specific client.
 
 ``film/get``
 Sends the movie corresponding to the given id if it exists.
@@ -36,8 +38,6 @@ docker-compose down && docker-compose build && docker-compose up -d && docker-co
 
 ## Miscellaneous
 
-The database is empty.
+The database is empty when first launching the composed image.
 If needed, it is possible to add some movies with the function ```film/add``` or ```film_loue/add```.
 
-
-*Agathe Hainaut & Kévin Lethuillier*
